@@ -9,10 +9,14 @@
 import Foundation
 
 private let tlStopIDEncoderString = "tlStopIDEncoder"
+private let muniDirectionEncoderString = "muniDirectionEncoder"
 
 public class MuniStop: TransitStop {
     
-    var tlStopID: String = ""
+    //MARK: - Properties
+    
+    public var tlStopID: String = ""
+    public var muniDirection: MuniRoute.MuniDirection = .Unknown
     
     //MARK: - NSCoding
     
@@ -21,6 +25,7 @@ public class MuniStop: TransitStop {
         
         //Custom MuniStop properties
         tlStopID = aDecoder.decodeObjectForKey(tlStopIDEncoderString) as! String
+        muniDirection = MuniRoute.MuniDirection(rawValue: aDecoder.decodeIntegerForKey(muniDirectionEncoderString))!
     }
     
     public override func encodeWithCoder(aCoder: NSCoder) {
@@ -28,5 +33,6 @@ public class MuniStop: TransitStop {
         
         //Custom MuniStop properties
         aCoder.encodeObject(tlStopID, forKey: tlStopIDEncoderString)
+        aCoder.encodeObject(muniDirection.rawValue, forKey: muniDirectionEncoderString)
     }
 }

@@ -12,6 +12,12 @@ private let tlRouteIDEncoderString = "tlRouteIDEncoder"
 
 public class MuniRoute: TransitRoute {
     
+    public enum MuniDirection: Int {
+        case Unknown = 0, Inbound, Outbound
+    }
+    
+    //MARK: - Properties
+    
     public var tlRouteID: String = ""
     
     //MARK: - NSCoding
