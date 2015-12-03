@@ -20,7 +20,7 @@ private let predictionsEncoderString = "kPredictionsEncoder"
 private let messagesEncoderString = "kMessagesEncoder"
 
 //A transit stop is a single stop which is tied to a single route
-public class TransitStop:NSObject, NSCoding {
+public class TransitStop: NSObject, NSCoding {
     
     public var routeTitle:String = ""
     public var routeTag:String = ""
@@ -90,7 +90,7 @@ public class TransitStop:NSObject, NSCoding {
     
     //MARK: NSCoding
     
-    public required init?(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         routeTitle = aDecoder.decodeObjectForKey(routeTitleEncoderString) as! String
         routeTag = aDecoder.decodeObjectForKey(routeTagEncoderString) as! String
         stopTitle = aDecoder.decodeObjectForKey(stopTitleEncoderString) as! String
