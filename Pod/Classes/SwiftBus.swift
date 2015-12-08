@@ -56,13 +56,13 @@ public class SwiftBus {
             let connectionHandler = SwiftBusConnectionHandler()
             connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]) -> Void in
                 
-                //SF MUNI is TransitLand enabled
-                self.masterListTransitAgencies[sfMuniKey]!.agencyType = .TransitLandEnabled
-                
                 dispatch_sync(self.queue) {
                     //Dispatch sync for multithreaded programs
                     self.masterListTransitAgencies = agencies
 
+                    //SF MUNI is TransitLand enabled
+                    self.masterListTransitAgencies[sfMuniKey]!.agencyType = .TransitLandEnabled
+                    
                     closure(agencies: agencies)
                 }
             })
