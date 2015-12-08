@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Nextbus
 private let routeTitleEncoderString = "kRouteTitleEncoder"
 private let routeTagEncoderString = "kRouteTagEncoder"
 private let stopTitleEncoderString = "kStopTitleEncoder"
@@ -19,9 +20,13 @@ private let lonEncoderString = "kLonEncoder"
 private let predictionsEncoderString = "kPredictionsEncoder"
 private let messagesEncoderString = "kMessagesEncoder"
 
+//Transitland
+private let tlStopIDEncoderString = "tlStopIDEncoder"
+
 //A transit stop is a single stop which is tied to a single route
 public class TransitStop: NSObject, NSCoding {
     
+    //NextBus
     public var routeTitle:String = ""
     public var routeTag:String = ""
     public var stopTitle:String = ""
@@ -32,6 +37,10 @@ public class TransitStop: NSObject, NSCoding {
     public var lon:Double = 0
     public var predictions:[String : [TransitPrediction]] = [:] //[direction : [prediction]]
     public var messages:[String] = []
+    
+    //TransitLand
+    public var routeType: TransitRoute.RouteType = .Normal
+    public var tlStopID: String = ""
     
     //Init without predictions or direction
     public init(routeTitle:String, routeTag:String, stopTitle:String, stopTag:String) {
@@ -91,6 +100,7 @@ public class TransitStop: NSObject, NSCoding {
     //MARK: NSCoding
     
     public required init(coder aDecoder: NSCoder) {
+        //Nextbus
         routeTitle = aDecoder.decodeObjectForKey(routeTitleEncoderString) as! String
         routeTag = aDecoder.decodeObjectForKey(routeTagEncoderString) as! String
         stopTitle = aDecoder.decodeObjectForKey(stopTitleEncoderString) as! String
@@ -101,9 +111,13 @@ public class TransitStop: NSObject, NSCoding {
         lon = aDecoder.decodeDoubleForKey(lonEncoderString)
         predictions = aDecoder.decodeObjectForKey(predictionsEncoderString) as! [String : [TransitPrediction]]
         messages = aDecoder.decodeObjectForKey(messagesEncoderString) as! [String]
+        
+        //Transitland
+        tlStopID = aDecoder.decodeObjectForKey(tlStopIDEncoderString) as! String
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {
+        //NextBus
         aCoder.encodeObject(routeTitle, forKey: routeTitleEncoderString)
         aCoder.encodeObject(routeTag, forKey: routeTagEncoderString)
         aCoder.encodeObject(stopTitle, forKey: stopTitleEncoderString)
@@ -114,5 +128,8 @@ public class TransitStop: NSObject, NSCoding {
         aCoder.encodeDouble(lon, forKey: lonEncoderString)
         aCoder.encodeObject(predictions, forKey: predictionsEncoderString)
         aCoder.encodeObject(messages, forKey: messagesEncoderString)
+        
+        //Transitland
+        aCoder.encodeObject(tlStopID, forKey: tlStopIDEncoderString)
     }
 }

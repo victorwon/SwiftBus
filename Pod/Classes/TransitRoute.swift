@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Vars for nextbus
 private let routeTagEncoderString = "kRouteTagEncoder"
 private let routeTitleEncoderString = "kRouteTitleEncoder"
 private let agencyTagEncoderString = "kAgencyTagEncoder"
@@ -23,8 +24,16 @@ private let latMaxEncoderString = "kLatMaxEncoder"
 private let lonMinEncoderString = "kLonMinEncoder"
 private let lonMaxEncoderString = "kLonMaxEncoder"
 
+//Vars for TransitLand
+private let tlRouteIDEncoderString = "tlRouteIDEncoder"
 
 public class TransitRoute: NSObject, NSCoding {
+    
+    public enum RouteType: Int {
+        case Normal, TransitLandEnabled
+    }
+    
+    //MARK: - Vars for NextBus
     
     public var routeTag:String = ""
     public var routeTitle:String = ""
@@ -47,6 +56,11 @@ public class TransitRoute: NSObject, NSCoding {
     public var latMax:Double = 0
     public var lonMin:Double = 0
     public var lonMax:Double = 0
+    
+    //MARK: - Vars for TransitLand
+    public var routeType: RouteType = .Normal
+    public var tlRouteID: String = ""
+    
     
     //Basic init
     public override init() { super.init() }
@@ -223,11 +237,13 @@ public class TransitRoute: NSObject, NSCoding {
         self.latMax = newRoute.latMax
         self.lonMin = newRoute.lonMin
         self.lonMax = newRoute.lonMax
+        
     }
     
     //MARK: NSCoding
     
     public required init(coder aDecoder: NSCoder) {
+        //Nextbus
         routeTag = aDecoder.decodeObjectForKey(routeTagEncoderString) as! String
         routeTitle = aDecoder.decodeObjectForKey(routeTitleEncoderString) as! String
         agencyTag = aDecoder.decodeObjectForKey(agencyTagEncoderString) as! String
@@ -247,9 +263,13 @@ public class TransitRoute: NSObject, NSCoding {
         latMax = aDecoder.decodeDoubleForKey(latMaxEncoderString)
         lonMin = aDecoder.decodeDoubleForKey(lonMinEncoderString)
         lonMax = aDecoder.decodeDoubleForKey(lonMaxEncoderString)
+        
+        //Transitland
+        self.tlRouteID = aDecoder.decodeObjectForKey(tlRouteIDEncoderString) as! String
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {
+        //NextBus
         aCoder.encodeObject(routeTag, forKey: routeTagEncoderString)
         aCoder.encodeObject(routeTitle, forKey: routeTitleEncoderString)
         aCoder.encodeObject(agencyTag, forKey: agencyTagEncoderString)
@@ -264,5 +284,8 @@ public class TransitRoute: NSObject, NSCoding {
         aCoder.encodeDouble(latMax, forKey: latMaxEncoderString)
         aCoder.encodeDouble(lonMin, forKey: lonMinEncoderString)
         aCoder.encodeDouble(lonMax, forKey: lonMaxEncoderString)
+        
+        //Transitland
+        aCoder.encodeObject(tlRouteID, forKey: tlRouteIDEncoderString)
     }
 }
