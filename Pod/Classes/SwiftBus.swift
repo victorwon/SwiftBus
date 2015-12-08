@@ -20,6 +20,8 @@ public class SwiftBus {
     
     private var masterListTransitAgencies:[String : TransitAgency] = [:]
     
+    private var queue = dispatch_queue_create("swiftbus.masterlistqueue", nil)
+    
     private init() { }
     
     /*
@@ -52,9 +54,12 @@ public class SwiftBus {
             let connectionHandler = SwiftBusConnectionHandler()
             connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]) -> Void in
                 //Insert this closure around the inner one because the agencies need to be saved
-                self.masterListTransitAgencies = agencies
+                dispatch_sync(self.queue) {
+                    //Dispatch sync for multithreaded programs
+                    self.masterListTransitAgencies = agencies
 
-                closure(agencies: agencies)
+                    closure(agencies: agencies)
+                }
             })
             
         }
@@ -87,11 +92,15 @@ public class SwiftBus {
                     route.agencyTag = agencyTag
                 }
                 
-                //Saving the routes for the agency
-                currentAgency.agencyRoutes = agencyRoutes
-                
-                //Return the transitRoutes for the agency
-                closure(agency: currentAgency)
+                dispatch_sync(self.queue) {
+                    //Dispatch sync for multithreaded programs
+                    
+                    //Saving the routes for the agency
+                    currentAgency.agencyRoutes = agencyRoutes
+                    
+                    //Return the transitRoutes for the agency
+                    closure(agency: currentAgency)
+                }
             })
         })
 
@@ -150,10 +159,13 @@ public class SwiftBus {
                         }
                     }
                     
-                    self.masterListTransitAgencies[agencyTag]?.agencyRoutes[routeTag] = transitRoute
-                    
-                    //Call the closure
-                    closure(route: transitRoute)
+                    dispatch_sync(self.queue) {
+                        //Dispatch sync for multithreaded programs
+                        self.masterListTransitAgencies[agencyTag]?.agencyRoutes[routeTag] = transitRoute
+                        
+                        //Call the closure
+                        closure(route: transitRoute)
+                    }
                     
                 } else {
                     //There was a problem, return nil
@@ -221,11 +233,14 @@ public class SwiftBus {
                 
                 currentRoute.vehiclesOnRoute = []
                 
-                for vehiclesInDirection in locations.values {
-                    currentRoute.vehiclesOnRoute += vehiclesInDirection
+                dispatch_sync(self.queue) {
+                    //Dispatch sync for multithreaded programs
+                    for vehiclesInDirection in locations.values {
+                        currentRoute.vehiclesOnRoute += vehiclesInDirection
+                    }
+                    
+                    closure(route: currentRoute)
                 }
-                
-                closure(route: currentRoute)
                 
             })
                 
@@ -260,6 +275,7 @@ public class SwiftBus {
                 currentStation.stopTitle = Array(routes.values)[0].getStopForTag(stopTag)!.stopTitle //Safe, we know all these exist
                 currentStation.predictions = predictions
                 
+                //Dispatch sync for multithreaded programs
                 //Saving the predictions in the TransitStop objects for all TransitRoutes
                 for route in routes.values {
                     if let stop = route.getStopForTag(stopTag) {
@@ -297,11 +313,14 @@ public class SwiftBus {
                 let connectionHandler = SwiftBusConnectionHandler()
                 connectionHandler.requestStopPredictionData(stopTag, onRoute: routeTag, withAgency: agencyTag, closure: {(predictions:[String : [TransitPrediction]], messages:[String]) -> Void in
                     
-                    currentStop.predictions = predictions
-                    currentStop.messages = messages
-                    
-                    //Call the closure
-                    closure(stop: currentStop)
+                    dispatch_sync(self.queue) {
+                        //Dispatch sync for multithreaded programs
+                        currentStop.predictions = predictions
+                        currentStop.messages = messages
+                        
+                        //Call the closure
+                        closure(stop: currentStop)
+                    }
                     
                 })
                     
