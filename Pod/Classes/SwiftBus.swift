@@ -13,6 +13,8 @@
 
 //
 
+private let sfMuniKey = "sf-muni"
+
 import Foundation
 
 public class SwiftBus {
@@ -53,7 +55,10 @@ public class SwiftBus {
             //We need to load the transit agency data
             let connectionHandler = SwiftBusConnectionHandler()
             connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]) -> Void in
-                //Insert this closure around the inner one because the agencies need to be saved
+                
+                //SF MUNI is TransitLand enabled
+                self.masterListTransitAgencies[sfMuniKey]!.agencyType = .TransitLandEnabled
+                
                 dispatch_sync(self.queue) {
                     //Dispatch sync for multithreaded programs
                     self.masterListTransitAgencies = agencies
@@ -90,6 +95,7 @@ public class SwiftBus {
                 //Adding the agency to the route
                 for route in agencyRoutes.values {
                     route.agencyTag = agencyTag
+                    route.routeType = currentAgency.agencyType
                 }
                 
                 dispatch_sync(self.queue) {
@@ -156,6 +162,7 @@ public class SwiftBus {
                     for routeDirection in transitRoute.stopsOnRoute.values {
                         for stop in routeDirection {
                             stop.agencyTag = agencyTag
+                            stop.stopType = transitRoute.routeType
                         }
                     }
                     

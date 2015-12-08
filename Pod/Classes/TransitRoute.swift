@@ -25,13 +25,10 @@ private let lonMinEncoderString = "kLonMinEncoder"
 private let lonMaxEncoderString = "kLonMaxEncoder"
 
 //Vars for TransitLand
+private let routeTypeEncoderString = "routeTypeEncoder"
 private let tlRouteIDEncoderString = "tlRouteIDEncoder"
 
 public class TransitRoute: NSObject, NSCoding {
-    
-    public enum RouteType: Int {
-        case Normal, TransitLandEnabled
-    }
     
     //MARK: - Vars for NextBus
     
@@ -58,7 +55,7 @@ public class TransitRoute: NSObject, NSCoding {
     public var lonMax:Double = 0
     
     //MARK: - Vars for TransitLand
-    public var routeType: RouteType = .Normal
+    public var routeType: TransitAgency.ExtraFeatures = .Normal
     public var tlRouteID: String = ""
     
     
@@ -265,6 +262,7 @@ public class TransitRoute: NSObject, NSCoding {
         lonMax = aDecoder.decodeDoubleForKey(lonMaxEncoderString)
         
         //Transitland
+        self.routeType = TransitAgency.ExtraFeatures(rawValue: aDecoder.decodeIntegerForKey(routeTypeEncoderString))!
         self.tlRouteID = aDecoder.decodeObjectForKey(tlRouteIDEncoderString) as! String
     }
     
@@ -286,6 +284,7 @@ public class TransitRoute: NSObject, NSCoding {
         aCoder.encodeDouble(lonMax, forKey: lonMaxEncoderString)
         
         //Transitland
+        aCoder.encodeInteger(routeType.rawValue, forKey: routeTypeEncoderString)
         aCoder.encodeObject(tlRouteID, forKey: tlRouteIDEncoderString)
     }
 }

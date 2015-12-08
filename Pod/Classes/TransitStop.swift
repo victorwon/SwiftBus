@@ -21,6 +21,7 @@ private let predictionsEncoderString = "kPredictionsEncoder"
 private let messagesEncoderString = "kMessagesEncoder"
 
 //Transitland
+private let stopTypeEncoderString = "stopTypeEncoder"
 private let tlStopIDEncoderString = "tlStopIDEncoder"
 
 //A transit stop is a single stop which is tied to a single route
@@ -39,7 +40,7 @@ public class TransitStop: NSObject, NSCoding {
     public var messages:[String] = []
     
     //TransitLand
-    public var routeType: TransitRoute.RouteType = .Normal
+    public var stopType: TransitAgency.ExtraFeatures = .Normal
     public var tlStopID: String = ""
     
     //Init without predictions or direction
@@ -113,7 +114,8 @@ public class TransitStop: NSObject, NSCoding {
         messages = aDecoder.decodeObjectForKey(messagesEncoderString) as! [String]
         
         //Transitland
-        tlStopID = aDecoder.decodeObjectForKey(tlStopIDEncoderString) as! String
+        self.stopType = TransitAgency.ExtraFeatures(rawValue: aDecoder.decodeIntegerForKey(stopTypeEncoderString))!
+        self.tlStopID = aDecoder.decodeObjectForKey(tlStopIDEncoderString) as! String
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {
@@ -130,6 +132,7 @@ public class TransitStop: NSObject, NSCoding {
         aCoder.encodeObject(messages, forKey: messagesEncoderString)
         
         //Transitland
-        aCoder.encodeObject(tlStopID, forKey: tlStopIDEncoderString)
+        aCoder.encodeInteger(self.stopType.rawValue, forKey: stopTypeEncoderString)
+        aCoder.encodeObject(self.tlStopID, forKey: tlStopIDEncoderString)
     }
 }

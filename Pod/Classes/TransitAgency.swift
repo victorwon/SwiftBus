@@ -8,19 +8,31 @@
 
 import Foundation
 
+//NextBus
 private let agencyTagEncoderString = "kAgencyTagEncoder"
 private let agencyTitleEncoderString = "kAgencyTitleEncoder"
 private let agencyShortTitleEncoderString = "kAgencyShortTitleEncoder"
 private let agencyRegionEncoderString = "kAgencyRegionEncoder"
 private let agencyRoutesEncoderString = "kAgencyRoutesEncoder"
 
+//Transitland
+private let agencyTypeEncoderString = "agencyTypeEncoder"
+
 public class TransitAgency: NSObject, NSCoding {
     
+    public enum ExtraFeatures: Int {
+        case Normal, TransitLandEnabled
+    }
+    
+    //NextBus
     public var agencyTag:String = ""
     public var agencyTitle:String = ""
     public var agencyShortTitle:String = ""
     public var agencyRegion:String = ""
     public var agencyRoutes:[String : TransitRoute] = [:]
+    
+    //TransitLand
+    public var agencyType: ExtraFeatures = .Normal
     
     //Convenvience
     public override init() { }
@@ -73,18 +85,26 @@ public class TransitAgency: NSObject, NSCoding {
     //MARK : NSCoding
     
     required public init(coder aDecoder: NSCoder) {
+        //NextBus
         agencyTag = aDecoder.decodeObjectForKey(agencyTagEncoderString) as! String
         agencyTitle = aDecoder.decodeObjectForKey(agencyTitleEncoderString) as! String
         agencyShortTitle = aDecoder.decodeObjectForKey(agencyShortTitleEncoderString) as! String
         agencyRegion = aDecoder.decodeObjectForKey(agencyRegionEncoderString) as! String
         agencyRoutes = aDecoder.decodeObjectForKey(agencyRoutesEncoderString) as! [String : TransitRoute]
+        
+        //Transitland
+        agencyType = ExtraFeatures(rawValue: aDecoder.decodeIntegerForKey(agencyTypeEncoderString))!
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {
+        //NextBus
         aCoder.encodeObject(agencyTag, forKey: agencyTagEncoderString)
         aCoder.encodeObject(agencyTitle, forKey: agencyTitleEncoderString)
         aCoder.encodeObject(agencyShortTitle, forKey: agencyShortTitleEncoderString)
         aCoder.encodeObject(agencyRegion, forKey: agencyRegionEncoderString)
         aCoder.encodeObject(agencyRoutes, forKey: agencyRoutesEncoderString)
+        
+        //TransitLand
+        aCoder.encodeInteger(self.agencyType.rawValue, forKey: agencyTypeEncoderString)
     }
 }
