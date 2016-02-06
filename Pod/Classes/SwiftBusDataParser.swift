@@ -74,6 +74,7 @@ class SwiftBusDataParser: NSObject {
         let currentRoute = TransitRoute()
         var stopDirectionDict: [String : [String]] = [:]
         var allStopsDictionary: [String : TransitStop] = [:]
+        var allPathArrays: [[PathPoint]] = []
         
         var routeConfig:[String : String] = xml["body"]["route"].element!.attributes
         
@@ -152,6 +153,19 @@ class SwiftBusDataParser: NSObject {
             }
             
         }
+        
+        // parsing paths
+        let paths = xml["body"]["route"]["path"]
+        for path in paths {
+            var points = [PathPoint]()
+            for point in path.children {
+                if let lat:String = point.element!.attributes["lat"], lon:String = point.element!.attributes["lon"] {
+                    points.append(PathPoint(lat: (lat as NSString).doubleValue, lon: (lon as NSString).doubleValue))
+                }
+            }
+            allPathArrays.append(points)
+        }
+        currentRoute.pathsOnRoute = allPathArrays
         
         closure(route: currentRoute)
     }

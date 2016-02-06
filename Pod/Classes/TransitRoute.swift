@@ -22,6 +22,35 @@ private let latMinEncoderString = "kLatMinEncoder"
 private let latMaxEncoderString = "kLatMaxEncoder"
 private let lonMinEncoderString = "kLonMinEncoder"
 private let lonMaxEncoderString = "kLonMaxEncoder"
+private let pathsOnRouteEncoderString = "kPathsOnRouteEncoder"
+
+private let latPathEncoderString = "kLatPathEncoder"
+private let lonPathEncoderString = "kLonPathEncoder"
+
+public class PathPoint: NSObject, NSCoding {
+    public var lat:Double = 0
+    public var lon:Double = 0
+    
+    //Basic init
+    public override init() { super.init() }
+
+    public init(lat: Double, lon: Double) {
+        self.lat = lat
+        self.lon = lon
+    }
+    
+    //MARK: NSCoding
+    
+    public required init?(coder aDecoder: NSCoder) {
+        lat = aDecoder.decodeDoubleForKey(latPathEncoderString)
+        lon = aDecoder.decodeDoubleForKey(lonPathEncoderString)
+    }
+    
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeDouble(lat, forKey: latPathEncoderString)
+        aCoder.encodeDouble(lon, forKey: lonPathEncoderString)
+    }
+}
 
 
 public class TransitRoute: NSObject, NSCoding {
@@ -33,6 +62,7 @@ public class TransitRoute: NSObject, NSCoding {
     public var directionTagToName:[String : String] = [:] //[directionTag : directionName]
     public var routeColor:String = ""
     public var oppositeColor:String = ""
+    public var pathsOnRoute:[[PathPoint]] = []
     
     #if os(OSX)
     public var representedRouteColor = NSColor()
@@ -112,6 +142,7 @@ public class TransitRoute: NSObject, NSCoding {
                         
                     self.vehiclesOnRoute = []
                     
+                    //TODO: Figure out directions for vehicles
                     for vehiclesInDirection in locations.values {
                         self.vehiclesOnRoute += vehiclesInDirection
                     }
@@ -223,6 +254,7 @@ public class TransitRoute: NSObject, NSCoding {
         self.latMax = newRoute.latMax
         self.lonMin = newRoute.lonMin
         self.lonMax = newRoute.lonMax
+        self.pathsOnRoute = newRoute.pathsOnRoute
     }
     
     //MARK: NSCoding
@@ -247,6 +279,8 @@ public class TransitRoute: NSObject, NSCoding {
         latMax = aDecoder.decodeDoubleForKey(latMaxEncoderString)
         lonMin = aDecoder.decodeDoubleForKey(lonMinEncoderString)
         lonMax = aDecoder.decodeDoubleForKey(lonMaxEncoderString)
+        pathsOnRoute = aDecoder.decodeObjectForKey(pathsOnRouteEncoderString) as! [[PathPoint]]
+
     }
     
     public func encodeWithCoder(aCoder: NSCoder) {
@@ -264,5 +298,7 @@ public class TransitRoute: NSObject, NSCoding {
         aCoder.encodeDouble(latMax, forKey: latMaxEncoderString)
         aCoder.encodeDouble(lonMin, forKey: lonMinEncoderString)
         aCoder.encodeDouble(lonMax, forKey: lonMaxEncoderString)
+        aCoder.encodeObject(pathsOnRoute, forKey: pathsOnRouteEncoderString)
+
     }
 }
