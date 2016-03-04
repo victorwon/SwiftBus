@@ -52,7 +52,11 @@ public class TransitStop:NSObject, NSCoding {
     public func getPredictionsAndMessages(closure:(success:Bool, predictions:[String : [TransitPrediction]], messages:[String]) -> Void) {
         if agencyTag != "" {
             let connectionHandler = SwiftBusConnectionHandler()
-            connectionHandler.requestStopPredictionData(self.stopTag, onRoute: self.routeTag, withAgency: self.agencyTag, closure: {(predictions:[String : [TransitPrediction]], messages:[String]) -> Void in
+            connectionHandler.requestStopPredictionData(self.stopTag, onRoute: self.routeTag, withAgency: self.agencyTag, closure: {(predictions:[String : [TransitPrediction]]?, messages:[String]) -> Void in
+                guard let predictions = predictions else{
+                    closure(success: false, predictions: [:], messages: [])
+                    return
+                }
                 
                 self.predictions = predictions
                 self.messages = messages

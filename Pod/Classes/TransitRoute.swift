@@ -138,8 +138,13 @@ public class TransitRoute: NSObject, NSCoding {
         getRouteConfig({(success:Bool, route:TransitRoute) -> Void in
             if success {
                 let connectionHandler = SwiftBusConnectionHandler()
-                connectionHandler.requestVehicleLocationData(onRoute: self.routeTag, withAgency: self.agencyTag, closure: {(locations:[String : [TransitVehicle]]) -> Void in
-                        
+                connectionHandler.requestVehicleLocationData(onRoute: self.routeTag, withAgency: self.agencyTag, closure: {(locations:[String : [TransitVehicle]]?) -> Void in
+                    
+                    guard let locations = locations else {
+                        closure(success: false, vehicles: [])
+                        return
+                    }
+                    
                     self.vehiclesOnRoute = []
                     
                     //TODO: Figure out directions for vehicles
@@ -176,7 +181,11 @@ public class TransitRoute: NSObject, NSCoding {
                 if let stop = self.getStopForTag(stopTag) {
                     
                     let connectionHandler = SwiftBusConnectionHandler()
-                    connectionHandler.requestStopPredictionData(stopTag, onRoute: self.routeTag, withAgency: self.agencyTag, closure: {(predictions:[String : [TransitPrediction]], messages:[String]) -> Void in
+                    connectionHandler.requestStopPredictionData(stopTag, onRoute: self.routeTag, withAgency: self.agencyTag, closure: {(predictions:[String : [TransitPrediction]]?, messages:[String]) -> Void in
+                        guard let predictions = predictions else {
+                            closure(success: false, predictions: [:])
+                            return
+                        }
                         
                         //Saving the messages and predictions
                         stop.predictions = predictions

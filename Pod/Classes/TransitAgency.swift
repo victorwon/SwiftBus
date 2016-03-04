@@ -48,7 +48,11 @@ public class TransitAgency: NSObject, NSCoding {
         let connectionHandler = SwiftBusConnectionHandler()
         
         //Need to request agency data first because only this call has the region and full name
-        connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]) -> Void in
+        connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]?) -> Void in
+            guard let agencies = agencies else {
+                closure(success: false, agency: self)
+                return
+            }
             
             //Getting the current agency
             if let thisAgency = agencies[self.agencyTag] {
@@ -56,7 +60,12 @@ public class TransitAgency: NSObject, NSCoding {
                 self.agencyShortTitle = thisAgency.agencyShortTitle
                 self.agencyRegion = thisAgency.agencyRegion
                 
-                connectionHandler.requestAllRouteData(self.agencyTag, closure: {(newAgencyRoutes:[String : TransitRoute]) -> Void in
+                connectionHandler.requestAllRouteData(self.agencyTag, closure: {(newAgencyRoutes:[String : TransitRoute]?) -> Void in
+                    guard let newAgencyRoutes = newAgencyRoutes else {
+                        closure(success: false, agency: self)
+                        return
+                    }
+                    
                     self.agencyRoutes = newAgencyRoutes
                     
                     closure(success: true, agency: self)

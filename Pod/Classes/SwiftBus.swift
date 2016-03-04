@@ -42,7 +42,7 @@ public class SwiftBus {
     - parameter closure: Code that is called after the dictionary of agencies has loaded
         - parameter agencies:    Dictionary of agencyTags to TransitAgency objects
     */
-    public func transitAgencies(closure: (agencies:[String : TransitAgency]) -> Void) {
+    public func transitAgencies(closure: (agencies:[String : TransitAgency]?) -> Void) {
         
         if masterListTransitAgencies.count > 0 {
             closure(agencies: masterListTransitAgencies)
@@ -50,9 +50,9 @@ public class SwiftBus {
         } else {
             //We need to load the transit agency data
             let connectionHandler = SwiftBusConnectionHandler()
-            connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]) -> Void in
+            connectionHandler.requestAllAgencies({(agencies:[String : TransitAgency]?) -> Void in
                 //Insert this closure around the inner one because the agencies need to be saved
-                self.masterListTransitAgencies = agencies
+                self.masterListTransitAgencies = agencies ?? [:]
 
                 closure(agencies: agencies)
             })
@@ -70,9 +70,9 @@ public class SwiftBus {
     public func routesForAgency(agencyTag: String, closure: (agency:TransitAgency?) -> Void) {
         
         //Getting all the agencies
-        transitAgencies({(innerAgencies:[String : TransitAgency]) -> Void in
+        transitAgencies({(innerAgencies:[String : TransitAgency]?) -> Void in
             
-            guard let currentAgency = innerAgencies[agencyTag] else {
+            guard let inners = innerAgencies, currentAgency = inners[agencyTag] else {
                 //The agency doesn't exist, return an empty dictionary
                 closure(agency: nil)
                 return
@@ -80,7 +80,11 @@ public class SwiftBus {
                 
             //The agency exists & we need to load the transit agency data
             let connectionHandler = SwiftBusConnectionHandler()
-            connectionHandler.requestAllRouteData(agencyTag, closure: {(agencyRoutes:[String : TransitRoute]) -> Void in
+            connectionHandler.requestAllRouteData(agencyTag, closure: {(agencyRoutes:[String : TransitRoute]?) -> Void in
+                guard let agencyRoutes = agencyRoutes else {
+                    closure(agency: nil)
+                    return
+                }
                 
                 //Adding the agency to the route
                 for route in agencyRoutes.values {
@@ -126,7 +130,6 @@ public class SwiftBus {
         - parameter route:   TransitRoute object that contains the configuration requested
     */
     public func routeConfiguration(routeTag: String, forAgency agencyTag: String, closure:(route: TransitRoute?) -> Void) {
-        
         //Getting all the routes for the agency
         routesForAgency(agencyTag, closure: {(transitRoutes:[String : TransitRoute]) -> Void in
             
@@ -217,7 +220,11 @@ public class SwiftBus {
                 
             //Get the route configuration
             let connectionHandler = SwiftBusConnectionHandler()
-            connectionHandler.requestVehicleLocationData(onRoute: routeTag, withAgency: agencyTag, closure:{(locations: [String : [TransitVehicle]]) -> Void in
+            connectionHandler.requestVehicleLocationData(onRoute: routeTag, withAgency: agencyTag, closure:{(locations: [String : [TransitVehicle]]?) -> Void in
+                guard let locations = locations else {
+                    closure(route: nil)
+                    return
+                }
                 
                 currentRoute.vehiclesOnRoute = []
                 
@@ -252,7 +259,12 @@ public class SwiftBus {
             
             //Get the predictions
             let connectionHandler = SwiftBusConnectionHandler()
-            connectionHandler.requestStationPredictionData(stopTag, forRoutes: existingRoutes, withAgency: agencyTag, closure: {(predictions:[String :[String : [TransitPrediction]]]) -> Void in
+            connectionHandler.requestStationPredictionData(stopTag, forRoutes: existingRoutes, withAgency: agencyTag, closure: {(predictions:[String :[String : [TransitPrediction]]]?) -> Void in
+                
+                guard let predictions = predictions else {
+                    closure(station: nil)
+                    return
+                }
                 
                 let currentStation = TransitStation()
                 currentStation.stopTag = stopTag
@@ -296,7 +308,11 @@ public class SwiftBus {
                 
                 //Get the route configuration
                 let connectionHandler = SwiftBusConnectionHandler()
-                connectionHandler.requestStopPredictionData(stopTag, onRoute: routeTag, withAgency: agencyTag, closure: {(predictions:[String : [TransitPrediction]], messages:[String]) -> Void in
+                connectionHandler.requestStopPredictionData(stopTag, onRoute: routeTag, withAgency: agencyTag, closure: {(predictions:[String : [TransitPrediction]]?, messages:[String]) -> Void in
+                    guard let predictions = predictions else {
+                        closure(stop: nil)
+                        return
+                    }
                     
                     currentStop.predictions = predictions
                     currentStop.messages = messages
