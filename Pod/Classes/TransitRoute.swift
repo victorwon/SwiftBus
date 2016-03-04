@@ -65,11 +65,11 @@ public class TransitRoute: NSObject, NSCoding {
     public var pathsOnRoute:[[PathPoint]] = []
     
     #if os(OSX)
-    public var representedRouteColor = NSColor()
-    public var representedOppositeColor = NSColor()
+    public var representedRouteColor = NSColor.blueColor()
+    public var representedOppositeColor = NSColor.yellowColor()
     #else
-    public var representedRouteColor = UIColor()
-    public var representedOppositeColor = UIColor()
+    public var representedRouteColor = UIColor.blueColor()
+    public var representedOppositeColor = UIColor.yellowColor()
     #endif
     
     public var vehiclesOnRoute:[TransitVehicle] = []
