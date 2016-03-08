@@ -96,7 +96,7 @@ class SwiftBusConnectionHandler: NSObject, NSURLConnectionDataDelegate {
             let urlRequest:NSURLRequest = NSURLRequest(URL: url)
             connection = NSURLConnection(request: urlRequest, delegate: self, startImmediately: true)
         } else {
-            //TODO: Alert user via closure that something bad happened
+            connectionDidFinishLoading(NSURLConnection())   // let it fail through to guarantee closures are called
         }
     }
     
