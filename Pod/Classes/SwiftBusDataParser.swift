@@ -200,7 +200,8 @@ class SwiftBusDataParser: NSObject {
             for vehicle in vehicles.children {
                 let attributes = vehicle.element!.attributes
                 
-                if let vehicleID = attributes["id"], directionTag = attributes["dirTag"], lat = attributes["lat"], lon = attributes["lon"], secondsSinceLastReport = attributes["secsSinceReport"], heading = attributes["heading"], speedKmH = attributes["speedKmHr"] {
+                if let vehicleID = attributes["id"], directionTag = attributes["dirTag"], lat = attributes["lat"], lon = attributes["lon"], secondsSinceLastReport = attributes["secsSinceReport"], heading = attributes["heading"] {
+                    let speedKmH = attributes["speedKmHr"] ?? "0" // some agencies like TTC doesn't report speed
                     //If all the proper attributes exist
                     let newVehicle = TransitVehicle(vehicleID: vehicleID, directionTag: directionTag, lat: lat, lon: lon, secondsSinceReport: secondsSinceLastReport, heading: heading, speedKmH: speedKmH)
                     
