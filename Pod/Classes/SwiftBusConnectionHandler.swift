@@ -93,7 +93,7 @@ class SwiftBusConnectionHandler: NSObject, NSURLConnectionDataDelegate {
         let optionalURL:NSURL? = NSURL(string: requestURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
         
         if let url = optionalURL as NSURL! {
-            let urlRequest:NSURLRequest = NSURLRequest(URL: url)
+            let urlRequest:NSURLRequest = NSURLRequest(URL: url, cachePolicy: .UseProtocolCachePolicy, timeoutInterval: 10.0)
             connection = NSURLConnection(request: urlRequest, delegate: self, startImmediately: true)
         } else {
             connectionDidFinishLoading(NSURLConnection())   // let it fail through to guarantee closures are called
