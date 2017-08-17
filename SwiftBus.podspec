@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Pod/Classes/**/*'
 
-  s.dependency 'SWXMLHash', '~> 2.0.0'
+  s.dependency 'SWXMLHash', '~> 4.1'
 end
