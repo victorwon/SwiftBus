@@ -3,7 +3,7 @@
 //  SwiftBus
 //
 //  Created by Adam on 2015-09-01.
-//  Copyright (c) 2015 Adam Boyd. All rights reserved.
+//  Copyright (c) 2017 Adam Boyd. All rights reserved.
 //
 
 import Foundation
@@ -12,13 +12,15 @@ private let numberOfVehiclesEncoderString = "kNumberOfVehiclesEncoder"
 private let predictionInMinutesEncoderString = "kPredictionInMinutesEncoder"
 private let predictionInSecondsEncoderString = "kPredictionInSecondsEncoder"
 private let vehicleTagEncoderString = "kVehicleTagEncoder"
+private let directionNameEncoderString = "directionNameEncoderString"
 
-public class TransitPrediction: NSObject, NSCoding {
+open class TransitPrediction: NSObject, NSCoding {
     
-    public var numberOfVehicles:Int = 0
-    public var predictionInMinutes:Int = 0
-    public var predictionInSeconds:Int = 0
-    public var vehicleTag:Int = 0
+    open var numberOfVehicles: Int = 0
+    open var predictionInMinutes: Int = 0
+    open var predictionInSeconds: Int = 0
+    open var vehicleTag: Int = 0
+    open var directionName: String = ""
     
     //Basic init
     public override init() { super.init() }
@@ -38,17 +40,21 @@ public class TransitPrediction: NSObject, NSCoding {
     
     //MARK : NSCoding
     public required init(coder aDecoder: NSCoder) {
-        numberOfVehicles = aDecoder.decodeObjectForKey(numberOfVehiclesEncoderString) as! Int
-        predictionInMinutes = aDecoder.decodeObjectForKey(predictionInMinutesEncoderString) as! Int
-        predictionInSeconds = aDecoder.decodeObjectForKey(predictionInSecondsEncoderString) as! Int
-        vehicleTag = aDecoder.decodeObjectForKey(vehicleTagEncoderString) as! Int
+        self.numberOfVehicles = aDecoder.decodeInteger(forKey: numberOfVehiclesEncoderString)
+        self.predictionInMinutes = aDecoder.decodeInteger(forKey: predictionInMinutesEncoderString)
+        self.predictionInSeconds = aDecoder.decodeInteger(forKey: predictionInSecondsEncoderString)
+        self.vehicleTag = aDecoder.decodeInteger(forKey: vehicleTagEncoderString)
+        if let directionName = aDecoder.decodeObject(forKey: directionNameEncoderString) as? NSString {
+            self.directionName = directionName as String
+        }
     }
     
-    public func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(numberOfVehicles, forKey: numberOfVehiclesEncoderString)
-        aCoder.encodeObject(predictionInMinutes, forKey: predictionInMinutesEncoderString)
-        aCoder.encodeObject(predictionInSeconds, forKey: predictionInSecondsEncoderString)
-        aCoder.encodeObject(vehicleTag, forKey: vehicleTagEncoderString)
+    open func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.numberOfVehicles, forKey: numberOfVehiclesEncoderString)
+        aCoder.encode(self.predictionInMinutes, forKey: predictionInMinutesEncoderString)
+        aCoder.encode(self.predictionInSeconds, forKey: predictionInSecondsEncoderString)
+        aCoder.encode(self.vehicleTag, forKey: vehicleTagEncoderString)
+        aCoder.encode(self.directionName as NSString, forKey: directionNameEncoderString)
     }
     
 }

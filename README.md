@@ -32,56 +32,73 @@ SwiftBus manages everything for you, so you can focus on making your app great. 
 
 For example, if you wanted to get a list of routes for a certain agency, you'd do this:
 ```
-SwiftBus.sharedController.routesForAgency("sf-muni", closure: {(agencyRoutes:[String : TransitRoute]) -> Void in
+SwiftBus.shared.routes(forAgencyTag: "sf-muni") { routes in
     for route in agencyRoutes.values {
         print("Route title: " + route.routeTitle)
     }
-})
+}
 ```
 
 Or if you wanted to get a list of vehicle locations for a certain route:
 ```
-SwiftBus.sharedController.vehicleLocationsForRoute("N", forAgency: "sf-muni", closure:{(route:TransitRoute?) -> Void in
-    if let transitRoute = route as TransitRoute! {
+SwiftBus.shared.vehicleLocations(forRouteTag: "N", forAgency: "sf-muni") { route in
+    if let transitRoute = route as? TransitRoute {
         print("\(transitRoute.vehiclesOnRoute.count) vehicles on route N Judah\n")
     }
-})
+}
 ```
 
 SwiftBus's usefulness shows itself here. If you tried to get the vehicle locations for a route on an agency that hasn't been loaded yet, SwiftBus will download all that information for you, so you can access it later without making any API calls. Using the example above, the route information for the N Judah is now downloaded, even though you didn't explicitly make that call.
 
 Here's a list of all the calls you can make through the SwiftBus singleton:
 ```
-public func transitAgencies(closure: (agencies:[String : TransitAgency]) -> Void)
+open func transitAgencies(_ completion: ((_ agencies: [String: TransitAgency]) -> Void)?)
 
-public func routesForAgency(agencyTag: String, closure: (agency:TransitAgency?) -> Void)
+open func configuration(forAgency agency: TransitAgency?, completion: ((_ agency: TransitAgency?) -> Void)?)
 
-public func configurationForMultipleRoutes(routeTags: [String], forAgency agencyTag:String, closure:(routes:[String : TransitRoute]) -> Void)
+open func configuration(forAgencyTag agencyTag: String?, completion: ((_ agency: TransitAgency?) -> Void)?)
 
-public func routesForAgency(agencyTag: String, closure: (routes:[String : TransitRoute] -> Void)
+open func routes(forAgency agency: TransitAgency?, completion: ((_ routes: [String: TransitRoute]) -> Void)?)
 
-public func routeConfiguration(routeTag: String, forAgency agencyTag: String, closure:(route: TransitRoute?) -> Void)
+open func routes(forAgencyTag agencyTag: String?, completion: ((_ routes: [String: TransitRoute]) -> Void)?)
 
-public func vehicleLocationsForRoute(routeTag: String, forAgency agencyTag: String, closure:(route: TransitRoute?) -> Void)
+open func configuration(forRoute route: TransitRoute?, completion: ((_ route: TransitRoute?) -> Void)?)
 
-public func stationPredictions(stopTag: String, forRoutes routeTags: [String], withAgency agencyTag: String, closure: (station: TransitStation?) -> Void)
+open func configuration(forRouteTag routeTag: String?, withAgencyTag agencyTag: String?, completion: ((_ route: TransitRoute?) -> Void)?)
 
-public func stopPredictions(stopTag: String, onRoute routeTag: String, withAgency agencyTag: String, closure: (stop: TransitStop?) -> Void)
+open func configurations(forMultipleRoutes routes: [TransitRoute?], completion: ((_ routes: [String: TransitRoute]) -> Void)?)
+
+open func configurations(forMultipleRouteTags routeTags: [String], withAgencyTag agencyTag: String, completion: ((_ routes: [String: TransitRoute]) -> Void)?)
+
+open func configurations(forMultipleRouteTags routeTags: [String], withAgencies agencies: [String], completion: ((_ routes: [String: TransitRoute]) -> Void)?)
+
+open func vehicleLocations(forRoute route: TransitRoute?, completion: ((_ route: TransitRoute?) -> Void)?)
+
+open func vehicleLocations(forRouteTag routeTag: String?, forAgency agencyTag: String?, completion: ((_ route: TransitRoute?) -> Void)?)
+
+open func stationPredictions(forStop stop: TransitStop?, forRoutes routes: [TransitRoute?], completion: ((_ station: TransitStation?) -> Void)?)
+
+open func stationPredictions(forStopTag stopTag: String, forRoutes routeTags: [String], withAgencyTag agencyTag: String, completion: ((_ station: TransitStation?) -> Void)?)
+
+open func stopPredictions(forStop stop: TransitStop?, completion: ((_ stop: TransitStop?) -> Void)?)
+
+open func stopPredictions(forStopTag stopTag: String?, onRouteTag routeTag: String?, withAgencyTag agencyTag: String?, completion: ((_ stop: TransitStop?) -> Void)?)
 ```
 
 You don't have to deal with the SwiftBus singleton, though, if you don't want to. You can make these calls through the various Transit* objects included in SwiftBus. For example, you could get stop predictions by calling the singleton like this:
 ```
-SwiftBus.sharedController.stopPredictions("3909", onRoute: "N", withAgency: "sf-muni", closure: {(route:TransitStop?) -> Void in
+
+SwiftBus.shared.stopPredictions(forStopTag: "3909", onRouteTag: "N", withAgencyTag: "sf-muni") { route in
     ...
-})
+}
 ```
 
 Or like this:
 ```
 var route = TransitRoute(routeTag: "N", agencyTag: "sf-muni")
-route.getStopPredictionsForStop("3909", closure: {(success:Bool, predictions:[String : [TransitPrediction]]) -> Void in
+route.stopPredictions(forStopTag: "3909") { predictions in
     ...
-})
+}
 ```
 
 ## Requirements
@@ -120,7 +137,11 @@ My website is [adamjboyd.com](http://www.adamjboyd.com).
 
 1.1: Bug fixes
 
-1.2: New object: TransitStation. A station is just like a TransitStop except for that there are multiple lines that stop there. Getting the predictions for a certain station gets the predictions for all lines that stop at that stop. TransitStations are created manually, so you don't have to show all lines that stop there.
+1.2: New object: `TransitStation`. A station is just like a `TransitStop` except for that there are multiple lines that stop there. Getting the predictions for a certain station gets the predictions for all lines that stop at that stop. `TransitStation`s are created manually, so you don't have to show all lines that stop there.
+
+1.3: Swift 3.0 suport, renaming func and variable names to fit new Swift 3.0 guidelines.
+
+1.4: New Object: `TransitMessage`. Getting messages will now return an array of `TransitMessage` instead of an array of `String`. You now have the ability to see the priority given to a particular message.
 
 ## License
 

@@ -3,7 +3,7 @@
 //  SwiftBusTests
 //
 //  Created by Adam on 2015-08-29.
-//  Copyright (c) 2015 Adam Boyd. All rights reserved.
+//  Copyright (c) 2017 Adam Boyd. All rights reserved.
 //
 
 import UIKit
@@ -33,7 +33,7 @@ class SwiftBusTests: XCTestCase {
         stopOB.predictions["Outbound to Ocean Beach"] = [TransitPrediction(predictionInMinutes: 1), TransitPrediction(predictionInMinutes: 2), TransitPrediction(predictionInMinutes: 3)]
         stopOB.predictions["Outbound to Ocean Beach via Downtown"] = [TransitPrediction(predictionInMinutes: 4), TransitPrediction(predictionInMinutes: 5), TransitPrediction(predictionInMinutes: 6)]
         
-        route.stopsOnRoute["Outbound to Ocean Beach Via Downtown"] = [stopOB]
+        route.stops["Outbound to Ocean Beach Via Downtown"] = [stopOB]
         
     }
     
@@ -43,7 +43,7 @@ class SwiftBusTests: XCTestCase {
     }
     
     func testRouteGetStop() {
-        if let _ = route.getStopForTag("3909") {
+        if let _ = route.stop(forTag: "3909") {
             XCTAssert(true, "Stop is gotten properly")
         } else {
             XCTAssert(false, "Stop is not gotten properly")
@@ -51,7 +51,7 @@ class SwiftBusTests: XCTestCase {
     }
     
     func testPredictionsInOrder() {
-        if stopOB.combinedPredictions()[0].predictionInSeconds < stopOB.combinedPredictions()[1].predictionInSeconds {
+        if stopOB.allPredictions[0].predictionInSeconds < stopOB.allPredictions[1].predictionInSeconds {
             XCTAssert(true, "Sorted predictions are in order")
         } else {
             XCTAssert(false, "Sorted predictions are not in order")
@@ -60,7 +60,7 @@ class SwiftBusTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

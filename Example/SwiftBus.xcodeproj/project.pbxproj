@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2720B64DC7AA9805A4DAFACF /* Pods_SwiftBus_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C6BE1A171BE0C6CD2B0097 /* Pods_SwiftBus_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		57F7427F80FD30F4BA519386 /* Pods_SwiftBus_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A51DB97148F841DDE2A8407 /* Pods_SwiftBus_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		6317212CB76333268D326122 /* Pods_SwiftBus_Watch_Example_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BFF18F548130DB30CE05E2 /* Pods_SwiftBus_Watch_Example_Extension.framework */; };
 		664290C51B9E8FAB00EE5096 /* SwiftBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 664290C41B9E8FAB00EE5096 /* SwiftBus.framework */; };
-		FD3BE3D6222C3FA7949CB965 /* Pods_SwiftBus_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD832EBE75D9BC9DA4C2C0B /* Pods_SwiftBus_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		668B668E1E4435DE00FE0614 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 668B668C1E4435DE00FE0614 /* Interface.storyboard */; };
+		668B66901E4435DE00FE0614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668B668F1E4435DE00FE0614 /* Assets.xcassets */; };
+		668B66971E4435DE00FE0614 /* SwiftBus Watch Example Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 668B66961E4435DE00FE0614 /* SwiftBus Watch Example Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		668B669C1E4435DE00FE0614 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B669B1E4435DE00FE0614 /* InterfaceController.swift */; };
+		668B669E1E4435DE00FE0614 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668B669D1E4435DE00FE0614 /* ExtensionDelegate.swift */; };
+		668B66A01E4435DE00FE0614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668B669F1E4435DE00FE0614 /* Assets.xcassets */; };
+		668B66A41E4435DE00FE0614 /* SwiftBus Watch Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 668B668A1E4435DE00FE0614 /* SwiftBus Watch Example.app */; };
+		66F425471E44419B00BE9F97 /* SwiftBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F425461E44419B00BE9F97 /* SwiftBus.framework */; };
+		E14483E840B1D67572D16FA3 /* Pods_SwiftBus_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C6DA742F810F63A8FD422B /* Pods_SwiftBus_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,38 +35,100 @@
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
 			remoteInfo = SwiftBus;
 		};
+		668B66981E4435DE00FE0614 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 668B66951E4435DE00FE0614;
+			remoteInfo = "SwiftBus Watch Example Extension";
+		};
+		668B66A21E4435DE00FE0614 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 668B66891E4435DE00FE0614;
+			remoteInfo = "SwiftBus Watch Example";
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		668B66AA1E4435DE00FE0614 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				668B66971E4435DE00FE0614 /* SwiftBus Watch Example Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668B66AC1E4435DE00FE0614 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				668B66A41E4435DE00FE0614 /* SwiftBus Watch Example.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0A94C16FC60C098B5BC3D139 /* Pods-SwiftBus_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Example/Pods-SwiftBus_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		136C1AC398D7A53148B9AA76 /* Pods-SwiftBus_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		21D4F9A57DF9A39A2CAE363A /* SwiftBus.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftBus.podspec; path = ../SwiftBus.podspec; sourceTree = "<group>"; };
+		4A068FDE04DBCEE19248341E /* Pods-SwiftBus Watch Example Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus Watch Example Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus Watch Example Extension/Pods-SwiftBus Watch Example Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		4A51DB97148F841DDE2A8407 /* Pods_SwiftBus_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBus_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* SwiftBus_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBus_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* SwiftBus_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBus_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Tests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		63CB28E001497A8F805B5313 /* Pods_SwiftBus_Watch_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBus_Watch_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664290C41B9E8FAB00EE5096 /* SwiftBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBus.framework; path = "Pods/../build/Debug-iphoneos/SwiftBus.framework"; sourceTree = "<group>"; };
-		7AD832EBE75D9BC9DA4C2C0B /* Pods_SwiftBus_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBus_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		87C6BE1A171BE0C6CD2B0097 /* Pods_SwiftBus_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBus_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		913D980D3D65F7ABEBFEDA0B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		A550BBBDEC2FD75A9BCDAEEF /* Pods-SwiftBus_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Example/Pods-SwiftBus_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		AF9C440B2018A94E656AE81F /* Pods-SwiftBus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Example/Pods-SwiftBus_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C72B44868A2988DE5BCB2DD2 /* Pods-SwiftBus_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		668B668A1E4435DE00FE0614 /* SwiftBus Watch Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftBus Watch Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		668B668D1E4435DE00FE0614 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		668B668F1E4435DE00FE0614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		668B66911E4435DE00FE0614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		668B66961E4435DE00FE0614 /* SwiftBus Watch Example Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SwiftBus Watch Example Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		668B669B1E4435DE00FE0614 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		668B669D1E4435DE00FE0614 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		668B669F1E4435DE00FE0614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		668B66A11E4435DE00FE0614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66F425461E44419B00BE9F97 /* SwiftBus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBus.framework; path = "../../../../../../../../../Developer/Xcode/DerivedData/SwiftBus-ddkyiwthvsvsbdfgieibynpvzbhz/Build/Products/Debug-watchsimulator/SwiftBus-watchOS/SwiftBus.framework"; sourceTree = "<group>"; };
+		66F425491E4441E600BE9F97 /* Pods_SwiftBus_Watch_Example.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_SwiftBus_Watch_Example.framework; path = "../../../../../../../../../Developer/Xcode/DerivedData/SwiftBus-ddkyiwthvsvsbdfgieibynpvzbhz/Build/Products/Debug-watchsimulator/Pods_SwiftBus_Watch_Example.framework"; sourceTree = "<group>"; };
+		70BFF18F548130DB30CE05E2 /* Pods_SwiftBus_Watch_Example_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBus_Watch_Example_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8066B51B0BC9F58F78142F82 /* Pods-SwiftBus_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Example/Pods-SwiftBus_Example.release.xcconfig"; sourceTree = "<group>"; };
+		913D980D3D65F7ABEBFEDA0B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; name = README.md; path = ../README.md; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.markdown; };
+		AB410F62AB52B11C4A1D4603 /* Pods-SwiftBus Watch Example Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus Watch Example Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus Watch Example Extension/Pods-SwiftBus Watch Example Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C6C6DA742F810F63A8FD422B /* Pods_SwiftBus_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftBus_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFFEF02CE490CB2BD07D1537 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		D8CECB49D396620B1678285A /* Pods-SwiftBus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		FAC843344466272B5CEF9FE8 /* Pods-SwiftBus_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftBus_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4C74FDF18E6A15623D6429E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66F425471E44419B00BE9F97 /* SwiftBus.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCD1AFB9204008FA782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				664290C51B9E8FAB00EE5096 /* SwiftBus.framework in Frameworks */,
-				2720B64DC7AA9805A4DAFACF /* Pods_SwiftBus_Example.framework in Frameworks */,
+				57F7427F80FD30F4BA519386 /* Pods_SwiftBus_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +136,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD3BE3D6222C3FA7949CB965 /* Pods_SwiftBus_Tests.framework in Frameworks */,
+				E14483E840B1D67572D16FA3 /* Pods_SwiftBus_Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668B66931E4435DE00FE0614 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6317212CB76333268D326122 /* Pods_SwiftBus_Watch_Example_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,11 +154,28 @@
 		38BA92D9440DD59A0149CCF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66F425491E4441E600BE9F97 /* Pods_SwiftBus_Watch_Example.framework */,
+				66F425461E44419B00BE9F97 /* SwiftBus.framework */,
 				664290C41B9E8FAB00EE5096 /* SwiftBus.framework */,
-				87C6BE1A171BE0C6CD2B0097 /* Pods_SwiftBus_Example.framework */,
-				7AD832EBE75D9BC9DA4C2C0B /* Pods_SwiftBus_Tests.framework */,
+				4A51DB97148F841DDE2A8407 /* Pods_SwiftBus_Example.framework */,
+				C6C6DA742F810F63A8FD422B /* Pods_SwiftBus_Tests.framework */,
+				63CB28E001497A8F805B5313 /* Pods_SwiftBus_Watch_Example.framework */,
+				70BFF18F548130DB30CE05E2 /* Pods_SwiftBus_Watch_Example_Extension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3AF238AD9C9E47EC8838F3C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A94C16FC60C098B5BC3D139 /* Pods-SwiftBus_Example.debug.xcconfig */,
+				8066B51B0BC9F58F78142F82 /* Pods-SwiftBus_Example.release.xcconfig */,
+				FAC843344466272B5CEF9FE8 /* Pods-SwiftBus_Tests.debug.xcconfig */,
+				136C1AC398D7A53148B9AA76 /* Pods-SwiftBus_Tests.release.xcconfig */,
+				4A068FDE04DBCEE19248341E /* Pods-SwiftBus Watch Example Extension.debug.xcconfig */,
+				AB410F62AB52B11C4A1D4603 /* Pods-SwiftBus Watch Example Extension.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -88,9 +184,11 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for SwiftBus */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				668B668B1E4435DE00FE0614 /* SwiftBus Watch Example */,
+				668B669A1E4435DE00FE0614 /* SwiftBus Watch Example Extension */,
 				607FACD11AFB9204008FA782 /* Products */,
-				82F1C64AAB73BEB4337B32B3 /* Pods */,
 				38BA92D9440DD59A0149CCF0 /* Frameworks */,
+				3AF238AD9C9E47EC8838F3C5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +197,8 @@
 			children = (
 				607FACD01AFB9204008FA782 /* SwiftBus_Example.app */,
 				607FACE51AFB9204008FA782 /* SwiftBus_Tests.xctest */,
+				668B668A1E4435DE00FE0614 /* SwiftBus Watch Example.app */,
+				668B66961E4435DE00FE0614 /* SwiftBus Watch Example Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,15 +252,25 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		82F1C64AAB73BEB4337B32B3 /* Pods */ = {
+		668B668B1E4435DE00FE0614 /* SwiftBus Watch Example */ = {
 			isa = PBXGroup;
 			children = (
-				A550BBBDEC2FD75A9BCDAEEF /* Pods-SwiftBus_Example.debug.xcconfig */,
-				AF9C440B2018A94E656AE81F /* Pods-SwiftBus_Example.release.xcconfig */,
-				D8CECB49D396620B1678285A /* Pods-SwiftBus_Tests.debug.xcconfig */,
-				C72B44868A2988DE5BCB2DD2 /* Pods-SwiftBus_Tests.release.xcconfig */,
+				668B668C1E4435DE00FE0614 /* Interface.storyboard */,
+				668B668F1E4435DE00FE0614 /* Assets.xcassets */,
+				668B66911E4435DE00FE0614 /* Info.plist */,
 			);
-			name = Pods;
+			path = "SwiftBus Watch Example";
+			sourceTree = "<group>";
+		};
+		668B669A1E4435DE00FE0614 /* SwiftBus Watch Example Extension */ = {
+			isa = PBXGroup;
+			children = (
+				668B669B1E4435DE00FE0614 /* InterfaceController.swift */,
+				668B669D1E4435DE00FE0614 /* ExtensionDelegate.swift */,
+				668B669F1E4435DE00FE0614 /* Assets.xcassets */,
+				668B66A11E4435DE00FE0614 /* Info.plist */,
+			);
+			path = "SwiftBus Watch Example Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,16 +280,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SwiftBus_Example" */;
 			buildPhases = (
-				53E526B17F61DC826EB7DC7F /* Check Pods Manifest.lock */,
+				7D4CE4F4BF361FAEC8C7553C /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				89366ED108CAA6FE88E1C7A1 /* Embed Pods Frameworks */,
-				BE90361476784EB167167E5B /* Copy Pods Resources */,
+				19E626D12CE8483797F1B0F2 /* [CP] Embed Pods Frameworks */,
+				93F5BE271274006DE3678627 /* [CP] Copy Pods Resources */,
+				668B66AC1E4435DE00FE0614 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				668B66A31E4435DE00FE0614 /* PBXTargetDependency */,
 			);
 			name = SwiftBus_Example;
 			productName = SwiftBus;
@@ -190,12 +302,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "SwiftBus_Tests" */;
 			buildPhases = (
-				A9CC0F5C22319CAA70E5968B /* Check Pods Manifest.lock */,
+				3A06053705AEAE0101E0073A /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				0280844685EEC060BD3904E1 /* Embed Pods Frameworks */,
-				D0583084CEB7BC2BE947F8D8 /* Copy Pods Resources */,
+				BE796394EBEE7B7FB3B8FF78 /* [CP] Embed Pods Frameworks */,
+				08CF330F7068B7C40B8B0AE7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,22 +319,74 @@
 			productReference = 607FACE51AFB9204008FA782 /* SwiftBus_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		668B66891E4435DE00FE0614 /* SwiftBus Watch Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 668B66AB1E4435DE00FE0614 /* Build configuration list for PBXNativeTarget "SwiftBus Watch Example" */;
+			buildPhases = (
+				668B66881E4435DE00FE0614 /* Resources */,
+				668B66AA1E4435DE00FE0614 /* Embed App Extensions */,
+				4C74FDF18E6A15623D6429E1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				668B66991E4435DE00FE0614 /* PBXTargetDependency */,
+			);
+			name = "SwiftBus Watch Example";
+			productName = "SwiftBus Watch Example";
+			productReference = 668B668A1E4435DE00FE0614 /* SwiftBus Watch Example.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		668B66951E4435DE00FE0614 /* SwiftBus Watch Example Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 668B66A91E4435DE00FE0614 /* Build configuration list for PBXNativeTarget "SwiftBus Watch Example Extension" */;
+			buildPhases = (
+				38EAE34A5851DB07959B8A20 /* [CP] Check Pods Manifest.lock */,
+				668B66921E4435DE00FE0614 /* Sources */,
+				668B66931E4435DE00FE0614 /* Frameworks */,
+				668B66941E4435DE00FE0614 /* Resources */,
+				3BB9D11A15F9788849C1C704 /* [CP] Embed Pods Frameworks */,
+				93E595FB2A7263183FC096DE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftBus Watch Example Extension";
+			productName = "SwiftBus Watch Example Extension";
+			productReference = 668B66961E4435DE00FE0614 /* SwiftBus Watch Example Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = AMWSZNUAX5;
+						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = AMWSZNUAX5;
+						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+					668B66891E4435DE00FE0614 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AMWSZNUAX5;
+						ProvisioningStyle = Automatic;
+					};
+					668B66951E4435DE00FE0614 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AMWSZNUAX5;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -241,6 +405,8 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* SwiftBus_Example */,
 				607FACE41AFB9204008FA782 /* SwiftBus_Tests */,
+				668B66891E4435DE00FE0614 /* SwiftBus Watch Example */,
+				668B66951E4435DE00FE0614 /* SwiftBus Watch Example Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -263,47 +429,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		668B66881E4435DE00FE0614 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668B66901E4435DE00FE0614 /* Assets.xcassets in Resources */,
+				668B668E1E4435DE00FE0614 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668B66941E4435DE00FE0614 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668B66A01E4435DE00FE0614 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0280844685EEC060BD3904E1 /* Embed Pods Frameworks */ = {
+		08CF330F7068B7C40B8B0AE7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		53E526B17F61DC826EB7DC7F /* Check Pods Manifest.lock */ = {
+		19E626D12CE8483797F1B0F2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		89366ED108CAA6FE88E1C7A1 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,29 +479,89 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus_Example/Pods-SwiftBus_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A9CC0F5C22319CAA70E5968B /* Check Pods Manifest.lock */ = {
+		38EAE34A5851DB07959B8A20 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BE90361476784EB167167E5B /* Copy Pods Resources */ = {
+		3A06053705AEAE0101E0073A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3BB9D11A15F9788849C1C704 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus Watch Example Extension/Pods-SwiftBus Watch Example Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D4CE4F4BF361FAEC8C7553C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		93E595FB2A7263183FC096DE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus Watch Example Extension/Pods-SwiftBus Watch Example Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93F5BE271274006DE3678627 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,19 +569,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus_Example/Pods-SwiftBus_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0583084CEB7BC2BE947F8D8 /* Copy Pods Resources */ = {
+		BE796394EBEE7B7FB3B8FF78 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftBus_Tests/Pods-SwiftBus_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -376,6 +604,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		668B66921E4435DE00FE0614 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668B669E1E4435DE00FE0614 /* ExtensionDelegate.swift in Sources */,
+				668B669C1E4435DE00FE0614 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -383,6 +620,16 @@
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* SwiftBus_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+		668B66991E4435DE00FE0614 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 668B66951E4435DE00FE0614 /* SwiftBus Watch Example Extension */;
+			targetProxy = 668B66981E4435DE00FE0614 /* PBXContainerItemProxy */;
+		};
+		668B66A31E4435DE00FE0614 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 668B66891E4435DE00FE0614 /* SwiftBus Watch Example */;
+			targetProxy = 668B66A21E4435DE00FE0614 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -403,6 +650,14 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
+		668B668C1E4435DE00FE0614 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				668B668D1E4435DE00FE0614 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -419,8 +674,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -448,6 +705,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -464,8 +722,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -484,43 +744,53 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A550BBBDEC2FD75A9BCDAEEF /* Pods-SwiftBus_Example.debug.xcconfig */;
+			baseConfigurationReference = 0A94C16FC60C098B5BC3D139 /* Pods-SwiftBus_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF9C440B2018A94E656AE81F /* Pods-SwiftBus_Example.release.xcconfig */;
+			baseConfigurationReference = 8066B51B0BC9F58F78142F82 /* Pods-SwiftBus_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SwiftBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8CECB49D396620B1678285A /* Pods-SwiftBus_Tests.debug.xcconfig */;
+			baseConfigurationReference = FAC843344466272B5CEF9FE8 /* Pods-SwiftBus_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -530,21 +800,111 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBus_Example.app/SwiftBus_Example";
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C72B44868A2988DE5BCB2DD2 /* Pods-SwiftBus_Tests.release.xcconfig */;
+			baseConfigurationReference = 136C1AC398D7A53148B9AA76 /* Pods-SwiftBus_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBus_Example.app/SwiftBus_Example";
+			};
+			name = Release;
+		};
+		668B66A51E4435DE00FE0614 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
+				IBSC_MODULE = SwiftBus_Watch_Example_Extension;
+				INFOPLIST_FILE = "SwiftBus Watch Example/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SwiftBus-Example.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		668B66A61E4435DE00FE0614 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
+				IBSC_MODULE = SwiftBus_Watch_Example_Extension;
+				INFOPLIST_FILE = "SwiftBus Watch Example/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SwiftBus-Example.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		668B66A71E4435DE00FE0614 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A068FDE04DBCEE19248341E /* Pods-SwiftBus Watch Example Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
+				INFOPLIST_FILE = "SwiftBus Watch Example Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SwiftBus-Example.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		668B66A81E4435DE00FE0614 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB410F62AB52B11C4A1D4603 /* Pods-SwiftBus Watch Example Extension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = AMWSZNUAX5;
+				INFOPLIST_FILE = "SwiftBus Watch Example Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.SwiftBus-Example.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -574,6 +934,24 @@
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
 				607FACF41AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		668B66A91E4435DE00FE0614 /* Build configuration list for PBXNativeTarget "SwiftBus Watch Example Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				668B66A71E4435DE00FE0614 /* Debug */,
+				668B66A81E4435DE00FE0614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		668B66AB1E4435DE00FE0614 /* Build configuration list for PBXNativeTarget "SwiftBus Watch Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				668B66A51E4435DE00FE0614 /* Debug */,
+				668B66A61E4435DE00FE0614 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
