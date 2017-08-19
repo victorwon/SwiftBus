@@ -99,7 +99,7 @@ class SwiftBusDataParser: NSObject {
         
         let stopDirections:XMLIndexer = xml["body"]["route"]["direction"]
         
-        for stopDirection in stopDirections {
+        for stopDirection in stopDirections.all {
             //For each direction, eg. "Inbound to downtown", "Inbound to Caltrain", "Outbound to Ocean Beach"
             if let currentDirection:String = stopDirection.element?.allAttributes["title"]?.text, let directionTag:String = stopDirection.element?.allAttributes["tag"]?.text {
             
@@ -123,7 +123,7 @@ class SwiftBusDataParser: NSObject {
         let stops = xml["body"]["route"]["stop"]
         
         //Going through the stops and creating TransitStop objects
-        for stop in stops {
+        for stop in stops.all {
             if let routeTitle = xml["body"]["route"].element?.allAttributes["title"]?.text, let routeTag = xml["body"]["route"].element?.allAttributes["tag"]?.text, let stopTitle = stop.element?.allAttributes["title"]?.text, let stopTag = stop.element?.allAttributes["tag"]?.text, let stopLat = stop.element?.allAttributes["lat"]?.text, let stopLon = stop.element?.allAttributes["lon"]?.text {
                 let stop = TransitStop(routeTitle: routeTitle, routeTag: routeTag, stopTitle: stopTitle, stopTag: stopTag)
                 stop.lat = Double(stopLat) ?? 0
@@ -153,10 +153,10 @@ class SwiftBusDataParser: NSObject {
         
         // parsing paths
         let paths = xml["body"]["route"]["path"]
-        for path in paths {
+        for path in paths.all {
             var points = [PathPoint]()
             for point in path.children {
-                if let lat:String = point.element!.attributes["lat"], let lon:String = point.element!.attributes["lon"] {
+                if let lat:String = point.element!.allAttributes["lat"]?.text, let lon:String = point.element!.allAttributes["lon"]?.text {
                     points.append(PathPoint(lat: (lat as NSString).doubleValue, lon: (lon as NSString).doubleValue))
                 }
             }
@@ -244,7 +244,7 @@ class SwiftBusDataParser: NSObject {
         
         let messages = predictions["message"]
         
-        for message in messages {
+        for message in messages.all {
             //Going through the messages and adding them
             if let messageTitle = message.element?.allAttributes["text"]?.text, let priority = message.element?.allAttributes["priority"]?.text {
                 messageArray.append(TransitMessage(message: messageTitle, priority: TransitMessagePriority(priority)))
