@@ -111,7 +111,10 @@ open class TransitRoute: NSObject, NSCoding {
         let connectionHandler = SwiftBusConnectionHandler()
         connectionHandler.requestRouteConfiguration(self.routeTag, fromAgency: self.agencyTag) { route in
     
-            if let route = route { self.updateData(route) }
+            if let route = route {
+                route.agencyTag = self.agencyTag
+                self.updateData(route)
+            }
             
             completion?(route)
         }
